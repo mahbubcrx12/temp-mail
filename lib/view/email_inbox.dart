@@ -1,14 +1,16 @@
 import 'package:assignment_asiatic/controller/email_controller.dart';
 import 'package:assignment_asiatic/model/email_model.dart';
 import 'package:assignment_asiatic/style/text_style.dart';
+import 'package:assignment_asiatic/view/homepage.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+
 class EmailInbox extends StatefulWidget {
   final String? accessToken;
 
-  const EmailInbox({super.key, required this.accessToken});
+  const EmailInbox({Key? key, required this.accessToken}) : super(key: key);
 
   @override
   _EmailInboxState createState() => _EmailInboxState();
@@ -43,21 +45,30 @@ class _EmailInboxState extends State<EmailInbox> {
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
         centerTitle: true,
-        title: Text(
-          'Email Inbox',
-          style: TextStyle(color: Colors.white),
+        title: Column(
+          children: [
+            Text(
+              'Email Inbox',
+              style: TextStyle(color: Colors.white),
+            ),
+            Text(
+              'Refresh for new mail',
+              style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 12),
+            ),
+          ],
         ),
         leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.white,
-            )),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Obx(
-        () => ListView.builder(
+            () => ListView.builder(
           itemCount: _emailController.emails.length,
           itemBuilder: (context, index) {
             final EmailModel email = _emailController.emails[index];
@@ -95,11 +106,40 @@ class _EmailInboxState extends State<EmailInbox> {
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: fetchEmailsAndListen,
-        backgroundColor: Colors.deepOrange,
-        child: Icon(Icons.refresh),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 28.0),
+              child: Align(
+                alignment: Alignment.bottomLeft,
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
+                  },
+                  backgroundColor: Colors.deepOrange,
+                  child: Icon(Icons.home),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: FloatingActionButton(
+                onPressed: fetchEmailsAndListen,
+                backgroundColor: Colors.deepOrange,
+                child: Icon(Icons.refresh),
+              ),
+            ),
+          ],
+        ),
       ),
+
+
     );
   }
 }

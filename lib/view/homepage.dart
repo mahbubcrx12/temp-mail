@@ -15,8 +15,16 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         title: Text(
           "Home Page",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
         ),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+            )),
       ),
       body: Center(
         child: Column(

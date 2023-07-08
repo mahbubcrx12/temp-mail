@@ -66,10 +66,16 @@ class UserInfoPage extends StatelessWidget {
                     height: 70,
                     decoration: BoxDecoration(color: Colors.white),
                     child: Center(
-                        child: Text(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
                       'Email Address: ${address}',
                       style: subtitleStyle,
-                    ))),
+                    ),
+                            Text('(send a mail & check inbox)',style: TextStyle(color: Colors.redAccent),),
+                          ],
+                        ))),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),

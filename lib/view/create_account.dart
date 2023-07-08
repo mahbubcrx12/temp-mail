@@ -101,16 +101,18 @@ class _CreateAccountState extends State<CreateAccount> {
                   labelStyle: TextStyle(color: Colors.redAccent),
                   validator: (val) {
                     if (val!.isEmpty) {
-                      Get.snackbar("Empty password", "Enter 10 digit at least",
+                      Get.snackbar("Empty password", "Enter 10 digits at least",
                           backgroundColor: Colors.white70);
-                    }
-                    if (val.length < 10) {
+                      return "Empty password";
+                    } else if (val.length < 10) {
                       Get.snackbar(
-                          "Too short password", "Enter 10 digit at least",
+                          "Too short password", "Enter 10 digits at least",
                           backgroundColor: Colors.white70);
+                      return null;
                     }
                     return null;
                   },
+
                 )),
             SizedBox(
               height: 30,
@@ -140,8 +142,9 @@ class _CreateAccountState extends State<CreateAccount> {
                       final address = responseData['address'] as String;
                       final createdAt = responseData['createdAt'] as String;
 
-                      Get.to(UserInfoPage(
-                          accountId, address, createdAt, jwtToken!));
+                      if (password.length >= 10) {
+                        Get.to(UserInfoPage(accountId, address, createdAt, jwtToken!));
+                      }
                     } else {
                       // Handle the case when account creation fails
                       Get.snackbar(
@@ -151,15 +154,16 @@ class _CreateAccountState extends State<CreateAccount> {
                         colorText: Colors.black,
                       );
                     }
+
                   } else {
                     // Display snackbar using Get.snackbar
-                    Get.snackbar(
-                      "Validation Error",
-                      "Please fill in the required fields correctly.",
-                      snackPosition: SnackPosition.BOTTOM,
-                      backgroundColor: Colors.red,
-                      colorText: Colors.white,
-                    );
+                    // Get.snackbar(
+                    //   "Validation Error",
+                    //   "Please fill in the required fields correctly.",
+                    //   snackPosition: SnackPosition.BOTTOM,
+                    //   backgroundColor: Colors.red,
+                    //   colorText: Colors.white,
+                    // );
                   }
                 },
               ),
