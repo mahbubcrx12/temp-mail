@@ -1,5 +1,9 @@
 # Temp Mail
 
+Technology version:<br>
+Flutter 3.10.5<br>
+dart 3.0.5
+
 Packages:<br>
   get: 4.6.5<br>
   dio: ^5.2.1+1<br>
