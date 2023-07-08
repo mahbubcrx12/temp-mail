@@ -1,16 +1,23 @@
 # assignment_asiatic
 
-A new Flutter project.
+Packages:
+  get: 4.6.5
+  dio: ^5.2.1+1
+  intl: ^0.18.1
 
-## Getting Started
+## Apk URL
 
-This project is a starting point for a Flutter application.
+- [Click here to download the apk file](https://drive.google.com/file/d/1DcJm4RADQ7oRTl-WCGJxvyJ-50nSNiIH/view)
 
-A few resources to get you started if this is your first Flutter project:
+## How to use the application:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1.Install the apk file.
+2.Tap on Create button.
+3.Provide username and password as required.
+4.You will get an email address on user information page.
+5.Sent a mail to that address.
+6.Tap on Check Inbox to see the mail you have sent.
+7.If inbox is empty press refresh icon.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
